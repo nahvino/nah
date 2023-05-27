@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nah/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const defaultTextStyle=TextStyle(fontFamily:'vazir' ,color: LightThemeColors.primaryTextColor);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -28,10 +30,28 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        textTheme:  TextTheme(bodyMedium: defaultTextStyle,
+        bodySmall:defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        displayLarge: defaultTextStyle.apply(color: Colors.red),
+        displayMedium: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        displaySmall: defaultTextStyle.apply(color: Colors.red),
+        bodyLarge: defaultTextStyle.apply(color: Colors.red),
+        headlineLarge: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        headlineSmall: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        headlineMedium: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        titleMedium: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        labelLarge: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        titleLarge: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),
+        titleSmall: defaultTextStyle.apply(color: LightThemeColors.primaryTextColor),),
+       
+        colorScheme: const ColorScheme.light(
+          primary: LightThemeColors.primaryColor,
+        secondary: LightThemeColors.secondryColor,
+        onSecondary: Colors.white),
+        
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Directionality(textDirection: TextDirection.rtl,
+      child: MyHomePage(title: 'خانه')),
     );
   }
 }
@@ -106,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'به نحوینو خوش آمدید',
             ),
             Text(
               '$_counter',
